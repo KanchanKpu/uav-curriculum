@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+**/figures/*.html
+**/figures/*.svg
+**/data/*.npy
+**/data/*.csv
+.mypy_cache/
+.pytest_cache/
