@@ -8,3 +8,4 @@ __pycache__/
 **/data/*.csv
 .mypy_cache/
 .pytest_cache/
+.env
