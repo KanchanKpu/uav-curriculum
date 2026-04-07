@@ -42,8 +42,8 @@ def test_sensor_noise():
         elevator_cmd=np.deg2rad(delta_e),
     )
     df_clean_copy = df_clean.copy()
-    df_noisy = simulation.add_sensor_noise(df=df_clean, config=config, rng=rng)
-    df_noisy2 = simulation.add_sensor_noise(df=df_clean, config=config, rng=rng2)
+    df_noisy = simulation.add_sensor_noise(data=df_clean, config=config, rng=rng)
+    df_noisy2 = simulation.add_sensor_noise(data=df_clean, config=config, rng=rng2)
 
     residual_std = (df_noisy["q_rad_s"] - df_clean["q_rad_s"]).std()
     assert np.allclose(residual_std, config.gyro_noise_std, rtol=0.20)
