@@ -30,11 +30,19 @@ class CessnaLongitudinalConfig:
     gyro_noise_std: float = 0.005  # rad/s
     angle_noise_std: float = 0.000875  # rad
     angle_random_walk: float = 0.00175  # rad/s^0.5
-    config_hash: str = field(init=False, repr=False, default="")  # SHA-256 hex digest
+    config_hash: str = field(init=False, repr=False)  # SHA-256 hex digest
 
     def __post_init__(self):
+        self.__setattr__("config_hash", self._compute_hash())
+
+    def _compute_hash(self):
         data_string = str(tuple(getattr(self, f.name) for f in fields(self) if f.init))
-        self.config_hash = hashlib.sha256(data_string.encode("utf-8")).hexdigest()
+        return hashlib.sha256(data_string.encode("utf-8")).hexdigest()
+
+    def __setattr__(self, name, value):
+        super().__setattr__(name, value)
+        if name != "config_hash":
+            super().__setattr__("config_hash", self._compute_hash())
 
 
 LongStateMatrix = namedtuple("LongStateMatrix", ["A", "B"])
