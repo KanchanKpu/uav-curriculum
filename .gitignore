@@ -3,10 +3,10 @@ __pycache__/
 *.pyc
 *.pyo
 *.ipynb
-**/figures/*.html
-**/figures/*.svg
-**/data/*.npy
-**/data/*.csv
+**/figures/**.html
+**/figures/**.svg
+**/data/**.npy
+**/data/**.csv
 .mypy_cache/
 .pytest_cache/
 .env
