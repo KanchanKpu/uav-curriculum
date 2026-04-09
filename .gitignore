@@ -7,6 +7,7 @@ __pycache__/
 **/figures/**/*.svg
 **/data/**/*.npy
 **/data/**/*.csv
+**/configs/**/*.json
 .mypy_cache/
 .pytest_cache/
 .env
